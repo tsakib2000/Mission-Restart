@@ -93,7 +93,7 @@ const allBtnDiv = document.createElement('div');
     for (categorie of categories) {
         const btnDiv = document.createElement('div')
         btnDiv.innerHTML = `
-    <button onclick="loadCategorie(${categorie})"  class="btn rounded-2xl">${categorie}</button>
+    <button onclick="loadCategorie('${categorie}')"  class="btn rounded-2xl">${categorie}</button>
     `
         categorieContainer.append(btnDiv)
         
@@ -152,6 +152,11 @@ btnDiv.innerHTML=`<div class="card bg-white  shadow-lg hover:shadow-xl transitio
                 </div>`
                 productcontainer.append(btnDiv)
     }
+}
+
+const loadCategorie=(categorie)=>{
+    console.log(categorie)
+
 }
 
 if (document.getElementById('categorie-container')) {
