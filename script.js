@@ -13,10 +13,11 @@ const loadProducts = () => {
             }
         })
 }
-const loadCategorie=(categorie)=>{
+const loadCategory=(categorie)=>{
+    console.log(categorie)
     fetch(`https://fakestoreapi.com/products/category/${categorie}`)
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => displayAllProducts(data))
 
 }
 const loadcategories = () => {
@@ -90,18 +91,20 @@ const  displayProducts  =  (products) => {
 const displayCatergories = (categories) => {
     const categorieContainer = document.getElementById('categorie-container');
     categorieContainer.innerHTML = "";
-const allBtnDiv = document.createElement('div');
-    allBtnDiv.innerHTML = `
-        <button class="btn rounded-2xl active">ALL</button>
-    `;
-   categorieContainer.append(allBtnDiv);
-    for (categorie of categories) {
-        const btnDiv = document.createElement('div')
-        btnDiv.innerHTML = `
-    <button onclick="loadCategorie('${categorie}')"  class="btn rounded-2xl">${categorie}</button>
-    `
-        categorieContainer.append(btnDiv)
-        
+
+    const allBtnDiv = document.createElement('div');
+    allBtnDiv.innerHTML = `<button class="btn rounded-2xl active">ALL</button>`;
+    allBtnDiv.querySelector('button').addEventListener('click', () => loadProducts());
+    categorieContainer.append(allBtnDiv);
+
+    for (const categorie of categories) {
+        const btnDiv = document.createElement('div');
+        const btn = document.createElement('button');
+        btn.textContent = categorie;
+        btn.className = "btn rounded-2xl";
+        btn.addEventListener('click', () => loadCategory(categorie)); // ✅ no quote issues
+        btnDiv.append(btn);
+        categorieContainer.append(btnDiv);
     }
 }
 const displayAllProducts=(products)=>{
