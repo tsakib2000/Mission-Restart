@@ -13,7 +13,12 @@ const loadProducts = () => {
             }
         })
 }
+const loadCategorie=(categorie)=>{
+    fetch(`https://fakestoreapi.com/products/category/${categorie}`)
+        .then(res => res.json())
+        .then(data => console.log(data))
 
+}
 const loadcategories = () => {
     fetch('https://fakestoreapi.com/products/categories')
         .then(res => res.json())
@@ -154,10 +159,7 @@ btnDiv.innerHTML=`<div class="card bg-white  shadow-lg hover:shadow-xl transitio
     }
 }
 
-const loadCategorie=(categorie)=>{
-    console.log(categorie)
 
-}
 
 if (document.getElementById('categorie-container')) {
     loadcategories();
