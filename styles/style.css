@@ -1,3 +1,8 @@
 *{
     font-family: "Roboto", sans-serif;
 }
+
+.active{
+    background-color: rgba(0, 0, 255, 0.637);
+    color: white;
+}

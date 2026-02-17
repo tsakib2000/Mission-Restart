@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SwiftCart</title>
-    <!-- style sheet -->
+    <title>Products</title>
+
+     <!-- style sheet -->
     <link rel="stylesheet" href="/styles/style.css">
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,6 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
 <body>
     <!-- navbar start here  -->
     <header class="w-11/12 mx-auto">
@@ -59,127 +58,20 @@
         </div>
     </header>
     <!-- navbar end here -->
+<main class="min-h-[calc(100vh-345px)] w-11/12 mx-auto">
+<div class="">
+    <h1 class="font-bold text-4xl text-center">
+       Our Products 
+    </h1>
+    <div id="categorie-container" class="flex flex-wrap gap-4 justify-center mt-4">
 
-    <main>
-        <!-- hero section start here -->
-        <section>
-            <div class="hero h-[80vh]" style="background-image: url('./Assets/banner-image.png');">
-                <div class="hero-overlay "></div>
-                <div class="text-white absolute left-32 top-96 md:top-96  ">
-                    <div class="max-w-md">
-                        <h1 class="mb-5 text-5xl font-bold">Best Collection For You</h1>
-                        <p class="mb-5">
-                            Discover the latest trends in fashion, electronics, and more. Shop with confidence and style
-                            at SwiftCart.
-                        </p>
-                        <button class="btn btn-primary rounded-md">Shop Now</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Hero section end here  -->
-        <!-- why choose us start here -->
-        <section class="bg-gray-100">
-            <div class="py-10 w-11/12 mx-auto ">
-                <div class="">
-                    <div class="text-center">
-                        <h1 class="font-extrabold text-4xl ">Why Choose Us</h1>
-                        <p class="text-gray-400">We provide the best shopping experiance with top-notch services.</p>
-                    </div>
-                </div>
+    </div>
+    <div id="categorie-product-container" class="grid grid-cols-1 md:grid-cols-4 gap-6 my-8">
 
-                <!-- cards container -->
-                <div class="my-11 grid md:grid-cols-2 gap-10 lg:grid-cols-4">
-                    <!-- card 1 -->
-                    <div class="card  bg-white  shadow-sm hover:shadow-md transition-shadow">
-                        <div class="card-body">
-                            <!-- Icon -->
-                            <div
-                                class="border-3 border-white w-12 absolute -top-7 left-2 h-12 bg-indigo-50 rounded-lg flex items-center justify-center mb-3">
-                                <i class="fa-solid fa-truck-fast text-indigo-600 text-2xl"></i>
-                            </div>
-
-                            <!-- Title -->
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Fast Delivery</h3>
-
-                            <!-- Description -->
-                            <p class="text-sm text-gray-500 leading-relaxed">
-                                Get your orders delivered to your doorstep quickly and efficiently.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- card 2 -->
-                    <div class="card bg-white  shadow-sm hover:shadow-md transition-shadow">
-                        <div class="card-body">
-                            <!-- Icon -->
-                            <div
-                                class="border-3 border-white absolute -top-7 left-2 w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center mb-3">
-                                <i class="fa-solid fa-truck-fast text-indigo-600 text-2xl"></i>
-                            </div>
-
-                            <!-- Title -->
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">24/7 Support</h3>
-
-                            <!-- Description -->
-                            <p class="text-sm text-gray-500 leading-relaxed">
-                                Our support team is available around the clock to assist you.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- card 3 -->
-                    <div class="card bg-white  shadow-sm hover:shadow-md transition-shadow">
-                        <div class="card-body">
-                            <!-- Icon -->
-                            <div
-                                class="border-3 border-white absolute -top-7 left-2 w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center mb-3">
-                                <i class="fa-solid fa-truck-fast text-indigo-600 text-2xl"></i>
-                            </div>
-
-                            <!-- Title -->
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Secure Payment</h3>
-
-                            <!-- Description -->
-                            <p class="text-sm text-gray-500 leading-relaxed">
-                                Experience safe and secure transactions with our encrypted payment systems.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- card 4 -->
-                    <div class="card bg-white  shadow-sm hover:shadow-md transition-shadow">
-                        <div class="card-body">
-                            <!-- Icon -->
-                            <div
-                                class="border-3 border-white absolute -top-7 left-2 w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center mb-3">
-                                <i class="fa-solid fa-truck-fast text-indigo-600 text-2xl"></i>
-                            </div>
-
-                            <!-- Title -->
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Easy Returns</h3>
-
-                            <!-- Description -->
-                            <p class="text-sm text-gray-500 leading-relaxed">
-                                Not satisfied? Return your products easily within 30 days.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- why choose us end here -->
-
-
-        <section class="py-10 w-11/12 mx-auto">
-            <h1 class="font-black text-4xl">
-                Trending Now
-            </h1>
-            <div id="product-container" class="py-5 flex gap-10 flex-col md:flex-row justify-center items-center">
-
-
-
-            </div>
-        </section>
-
-    </main>
+    </div>
+</div>
+</main>
+    <!-- Footer -->
     <div class="bg-indigo-950 ">
         <footer class="w-11/12 mx-auto footer sm:footer-horizontal text-base-content p-10 *:text-white">
             <aside>
@@ -254,5 +146,4 @@
 
     <script src="/script.js"></script>
 </body>
-
 </html>
