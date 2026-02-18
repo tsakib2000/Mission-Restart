@@ -14,10 +14,17 @@ const loadProducts = () => {
         })
 }
 const loadCategory=(categorie)=>{
-    console.log(categorie)
+    
     fetch(`https://fakestoreapi.com/products/category/${categorie}`)
         .then(res => res.json())
-        .then(data => displayAllProducts(data))
+        .then(data => {
+        const allbtn=   document.querySelectorAll('.ctg-btn')
+        const ctgbtn= document.getElementById(`ctg-btn-${categorie}`)
+        allbtn.forEach(btn => btn.classList.remove('active'));
+        ctgbtn.classList.add('active')
+            displayAllProducts(data)
+        
+        })
 
 }
 const loadcategories = () => {
@@ -31,7 +38,7 @@ const loadcategories = () => {
         })
 }
 const loadSingleProduct=(id)=>{
-    my_modal_2.showModal()
+    my_modal_4.showModal()
     fetch(`https://fakestoreapi.com/products/${id}`)
     .then(res=>res.json())
     .then(data=>displaySingleProduct(data))
@@ -99,7 +106,7 @@ const displayCatergories = (categories) => {
     categorieContainer.innerHTML = "";
 
     const allBtnDiv = document.createElement('div');
-    allBtnDiv.innerHTML = `<button class="btn rounded-2xl active">ALL</button>`;
+    allBtnDiv.innerHTML = `<button class="btn rounded-2xl active ctg-btn">ALL</button>`;
     allBtnDiv.querySelector('button').addEventListener('click', () => loadProducts());
     categorieContainer.append(allBtnDiv);
 
@@ -107,8 +114,9 @@ const displayCatergories = (categories) => {
         const btnDiv = document.createElement('div');
         const btn = document.createElement('button');
         btn.textContent = categorie;
-        btn.className = "btn rounded-2xl";
-        btn.addEventListener('click', () => loadCategory(categorie)); // ✅ no quote issues
+        btn.id =`ctg-btn-${categorie}`
+        btn.className = `btn rounded-2xl ctg-btn`;
+        btn.addEventListener('click', () => loadCategory(categorie)); 
         btnDiv.append(btn);
         categorieContainer.append(btnDiv);
     }
