@@ -30,6 +30,12 @@ const loadcategories = () => {
             }
         })
 }
+const loadSingleProduct=(id)=>{
+    my_modal_2.showModal()
+    fetch(`https://fakestoreapi.com/products/${id}`)
+    .then(res=>res.json())
+    .then(data=>displaySingleProduct(data))
+}
 
 
 const  displayProducts  =  (products) => {
@@ -115,8 +121,8 @@ const displayAllProducts=(products)=>{
         
 for (product of products) {
         
-        const btnDiv = document.createElement('div')
-btnDiv.innerHTML=`<div class="card bg-white  shadow-lg hover:shadow-xl transition-shadow">
+        const productDiv = document.createElement('div')
+productDiv.innerHTML=`<div class="card bg-white  shadow-lg hover:shadow-xl transition-shadow">
                     
                     <figure class="bg-gray-200 px-10 pt-10">
                         <img src="${product.image}" alt="Fjallraven Backpack"
@@ -147,6 +153,7 @@ btnDiv.innerHTML=`<div class="card bg-white  shadow-lg hover:shadow-xl transitio
                         
                         <div class="card-actions mt-4 grid grid-cols-2 gap-3">
                             <button
+                                onclick='loadSingleProduct(${product.id})'
                                 class="btn btn-outline btn-lg gap-2 border-gray-300 hover:bg-gray-50 hover:border-gray-400">
                                 <i class="fa-regular fa-eye"></i>
                                 Details
@@ -158,11 +165,98 @@ btnDiv.innerHTML=`<div class="card bg-white  shadow-lg hover:shadow-xl transitio
                         </div>
                     </div>
                 </div>`
-                productcontainer.append(btnDiv)
+                productcontainer.append(productDiv)
     }
 }
 
+const displaySingleProduct=(data)=>{
+const productModal = document.getElementById('product-modal')
+    productModal.innerHTML='';
+    productModal.innerHTML= `
+    <div class="bg-white rounded-3xl   w-full overflow-hidden flex flex-col md:flex-row">
 
+    <!-- LEFT: Image Panel -->
+    <div class="bg-gray-50 md:w-2/5 flex items-center justify-center p-10 relative">
+      <!-- Badge -->
+      <span class="absolute top-4 left-4 bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full">
+        ${data.category}
+      </span>
+      <img
+        src="${data.image}"
+        alt="Mens Casual Premium Slim Fit T-Shirts"
+        class="max-h-72 object-contain drop-shadow-xl hover:scale-105 transition-transform duration-300"
+        "
+      />
+    </div>
+
+    <!-- RIGHT: Details Panel -->
+    <div class="md:w-3/5 p-8 flex flex-col justify-between gap-4">
+
+      <!-- Top: ID + Title -->
+      <div>
+        
+        <h1 class="text-2xl font-bold text-gray-900 leading-snug">
+          ${data.title}
+        </h1>
+      </div>
+
+      <!-- Rating -->
+      <div class="flex items-center gap-2">
+        <div class="flex items-center gap-0.5">
+          <i class="fa-solid fa-star star-filled text-sm"></i>
+          <i class="fa-solid fa-star star-filled text-sm"></i>
+          <i class="fa-solid fa-star star-filled text-sm"></i>
+          <i class="fa-solid fa-star star-filled text-sm"></i>
+          <i class="fa-solid fa-star-half-stroke star-empty text-sm"></i>
+        </div>
+        <span class="text-sm font-semibold text-gray-700">${data.rating?.rate}</span>
+        <span class="text-sm text-gray-400">(259 reviews)</span>
+      </div>
+
+      <!-- Divider -->
+      <hr class="border-gray-100">
+
+      <!-- Description -->
+      <p class="text-sm text-gray-500 leading-relaxed">
+       ${data.description}
+      </p>
+
+      <!-- Divider -->
+      <hr class="border-gray-100">
+
+      <!-- Price + Actions -->
+      <div class="flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <p class="text-xs text-gray-400 uppercase tracking-wider mb-0.5">Price</p>
+          <p class="text-3xl font-bold text-gray-900">$${data.price}</p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <!-- Wishlist -->
+          <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-red-500 hover:border-red-200 transition-colors">
+            <i class="fa-regular fa-heart text-base"></i>
+          </button>
+
+          <!-- Add to Cart -->
+          <button
+            class="bg-gray-900 hover:bg-gray-700 text-white text-sm font-semibold px-6 py-3 rounded-2xl transition-all duration-200 hover:shadow-lg active:scale-95"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Shipping note -->
+      <p class="text-xs text-gray-400 flex items-center gap-1.5">
+        <i class="fa-solid fa-box-open text-xs"></i>
+        Free shipping on orders over $50
+      </p>
+
+    </div>
+  </div>
+
+    `
+}
 
 if (document.getElementById('categorie-container')) {
     loadcategories();
